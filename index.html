@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Usaha Kita - UMKM Lokal</title>
+  <meta name="description" content="Usaha Kita - UMKM Lokal Berkembang. Temukan produk, pesan mudah via WhatsApp, dan dukung usaha lokal!">
+  <meta property="og:title" content="Usaha Kita - UMKM Lokal Berkembang">
+  <meta property="og:description" content="Temukan produk, pesan mudah via WhatsApp, dan dukung usaha lokal!">
+  <meta property="og:image" content="assets/logo.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Swiper CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand: #fbbf24;
+      --brand-dark: #d97706;
+      --brand-brown: #92400e;
+      --brand-light: #fff7ed;
+      --brand-shadow: 0 10px 25px rgb(251 191 36 / 0.10);
+      --footer-bg: #2d1600;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #fffdf9;
+      color: #333;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; border-radius: 12px; }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255 255 255 / 0.97);
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      z-index: 1000;
+      transition: background-color 0.3s ease, padding 0.3s ease;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+    header.scrolled {
+      background: var(--brand-dark);
+      color: white;
+      padding: 0.6rem 2rem;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .logo-img {
+      height: 38px;
+      width: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 2px solid var(--brand);
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--brand-dark);
+      user-select: none;
+      cursor: default;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+    nav ul {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+    }
+    nav ul li a {
+      font-weight: 600;
+      color: inherit;
+      padding: 0.2rem 0.7rem;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      box-shadow: 0 2px 8px rgb(251 191 36 / 0.10);
+      outline: none;
+    }
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      margin-left: 1rem;
+    }
+    .hamburger span {
+      width: 28px;
+      height: 4px;
+      background: var(--brand-brown);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    @media (max-width: 900px) {
+      header { padding: 1rem 1rem; }
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--brand-light);
+        position: absolute;
+        top: 60px;
+        right: 2rem;
+        width: 180px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        border-radius: 12px;
+        z-index: 1001;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 80vh;
+      min-height: 420px;
+      background: linear-gradient(135deg, #d97706cc 0%, #fbbf24cc 100%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg,rgba(0,0,0,0.35) 40%,rgba(251,191,36,0.15) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+      user-select: none;
+      animation: fadeInHero 1.2s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes fadeInHero {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: none;}
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.5);
+      line-height: 1.15;
+      color: var(--brand);
+    }
+    .hero-content h3 {
+      margin-top: 0.5rem;
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      color: #fffde7;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.25);
+      margin-bottom: 1.2rem;
+    }
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2.2rem;
+      font-weight: 500;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    .btn-primary {
+      padding: 0.8rem 2.4rem;
+      background: var(--brand);
+      color: #78350f;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: var(--brand-shadow);
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background: var(--brand-dark);
+      color: #fff;
+      outline: none;
+      transform: scale(1.07);
+      box-shadow: 0 12px 20px rgb(245 158 11 / 0.18);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 1rem 6rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      scroll-margin-top: 80px;
+    }
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1.2rem;
+      color: var(--brand-brown);
+      position: relative;
+      letter-spacing: 1px;
+    }
+    section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--brand);
+      border-radius: 2px;
+      margin: 0.5rem auto 0;
+    }
+    section + section {
+      margin-top: 2.5rem;
+    }
+
+    /* Produk Grid */
+    .produk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+    .produk-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--brand-shadow);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid transparent;
+    }
+    .produk-card:hover,
+    .produk-card:focus-within {
+      transform: scale(1.07) rotate(-1deg);
+      box-shadow: 0 15px 35px rgb(251 191 36 / 0.25);
+      border-color: var(--brand);
+      outline: none;
+      z-index: 2;
+    }
+    .produk-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s;
+      border-radius: 16px 16px 0 0;
+    }
+    .produk-card:hover img,
+    .produk-card:focus-within img {
+      transform: scale(1.08);
+    }
+    .produk-info {
+      padding: 1.4rem 1.6rem 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .produk-info h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--brand-brown);
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+    }
+    .produk-info .harga {
+      color: var(--brand-dark);
+      font-weight: bold;
+      margin-bottom: 0.7rem;
+      font-size: 1.1rem;
+    }
+    .produk-info p {
+      color: #555;
+      flex-grow: 1;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+    }
+    .btn-detail {
+      align-self: flex-start;
+      background: var(--brand);
+      color: #78350f;
+      padding: 0.45rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background-color 0.3s;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 8px rgb(251 191 36 / 0.10);
+    }
+    .btn-detail:hover,
+    .btn-detail:focus {
+      background: var(--brand-dark);
+      color: #fff;
+      outline: none;
+    }
+    .btn-wa-produk {
+      align-self: flex-start;
+      background: #25d366;
+      color: #fff;
+      padding: 0.45rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 8px rgb(37 211 102 / 0.10);
+    }
+    .btn-wa-produk:hover,
+    .btn-wa-produk:focus {
+      background: #128c7e;
+      color: #fff;
+      outline: none;
+    }
+
+    /* Galeri */
+    #galeri {
+      background: #fefcfb;
+    }
+    .swiper {
+      padding-top: 2rem;
+      padding-bottom: 3rem;
+    }
+    .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .swiper-slide img {
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgb(0 0 0 / 0.1);
+      transition: transform 0.3s;
+      margin-bottom: 0.7rem;
+    }
+    .swiper-slide img:hover,
+    .swiper-slide img:focus {
+      transform: scale(1.1);
+      outline: none;
+    }
+    .galeri-caption {
+      font-size: 0.97rem;
+      color: #92400e;
+      background: #fff7ed;
+      padding: 0.3rem 1rem;
+      border-radius: 8px;
+      margin-top: -0.5rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 8px rgb(251 191 36 / 0.07);
+    }
+
+    /* Testimoni Swiper */
+    #testimoni {
+      background: #fff7ed;
+      padding: 4rem 1rem 5rem;
+    }
+    .testimoniSwiper {
+      padding-top: 2rem;
+      padding-bottom: 3rem;
+    }
+    .testimoniSwiper .swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+    .testimoni-card {
+      background: #fff;
+      padding: 1.2rem 1.5rem;
+      border-radius: 14px;
+      max-width: 320px;
+      box-shadow: 0 4px 16px rgb(0 0 0 / 0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .testimoni-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand);
+      margin-bottom: 0.5rem;
+      background: #fff7ed;
+    }
+    .testimoni-card p {
+      font-style: italic;
+      color: #92400e;
+      text-align: center;
+    }
+    .testimoni-card footer {
+      margin-top: 0.2rem;
+      font-weight: 600;
+      color: #b45309;
+      text-align: center;
+      font-size: 0.98rem;
+    }
+
+    /* Form Kontak */
+    form {
+      max-width: 600px;
+      margin: 2rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    label {
+      font-weight: 600;
+      color: #92400e;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      border: 2px solid #f3e8ff;
+      border-radius: 12px;
+      transition: border-color 0.3s;
+      font-family: inherit;
+      resize: vertical;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: var(--brand);
+      outline: none;
+      box-shadow: 0 0 8px rgb(251 191 36 / 0.5);
+    }
+    textarea {
+      min-height: 130px;
+    }
+    button[type="submit"] {
+      background: var(--brand);
+      color: #78350f;
+      border: none;
+      padding: 0.85rem 2.4rem;
+      font-weight: 700;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      align-self: center;
+      margin-top: 1rem;
+      width: 150px;
+      box-shadow: var(--brand-shadow);
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background: var(--brand-dark);
+      color: #fff;
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--footer-bg);
+      color: #fff8f0;
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+    }
+    .footer-logo img {
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 2px solid var(--brand);
+    }
+    .footer-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--brand);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .social-icons {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      font-size: 1.4rem;
+    }
+    .social-icons a {
+      color: #fff8f0;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover,
+    .social-icons a:focus {
+      color: var(--brand);
+      outline: none;
+    }
+    .footer-copyright {
+      font-size: 0.98rem;
+      color: #ffe6b8;
+      margin-top: 1rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.1rem; }
+      nav ul { gap: 1rem; }
+      section { padding: 3.5rem 0.5rem 4rem; }
+      .produk-grid { gap: 1.2rem; }
+      .testimoni-card { max-width: 95vw; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="navbar">
+  <div class="logo-wrap">
+    <img src="assets/logo.png" alt="Logo Usaha Kita" class="logo-img" loading="lazy" onerror="this.style.display='none'">
+    <span class="logo">Usaha Kita</span>
+  </div>
+  <div class="hamburger" id="hamburger" aria-label="Buka menu navigasi" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#hero">Beranda</a></li>
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="hero" class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+    <h1>
+      <span style="color:#fbbf24;">Usaha Kita</span><br>
+      UMKM Lokal Berkembang
+    </h1>
+    <h3>
+      Kopi Lokal, Rasa Nasional. Teman Setia di Setiap Cerita.
+    </h3>
+    <p>
+      Dukung produk lokal, ciptakan perubahan!<br>
+      Temukan produk terbaik, inovatif, dan berkualitas dari pelaku UMKM Indonesia.<br>
+      <b>Yuk, mulai belanja dan bantu UMKM naik kelas!</b>
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-primary" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})" aria-label="Lihat Produk">
+        Lihat Produk
+      </button>
+      <a href="https://wa.me/6281234567890" target="_blank" class="btn-primary" aria-label="Chat WhatsApp Usaha Kita" style="background:#25d366;color:#fff;">
+        <i class="fab fa-whatsapp"></i> Chat WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="produk" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
+  <h2>Produk Unggulan</h2>
+  <div class="produk-grid">
+    <article class="produk-card" tabindex="0">
+      <img src="img/WA +628122881109 Biji kopi green bean terlaris.jpg" alt="Kopi Robusta Asli - Produk Kopi Lokal Usaha Kita" loading="lazy" />
+      <div class="produk-info">
+        <h3>Kopi Robusta Asli</h3>
+        <div class="harga">Rp 60.000 / 250gr</div>
+        <p>Kopi robusta premium hasil petani lokal dengan aroma khas yang menggoda.</p>
+        <a href="#" class="btn-detail" tabindex="0">Detail</a>
+        <a href="https://wa.me/6281234567890?text=Halo%20Usaha%20Kita%2C%20saya%20ingin%20pesan%20Kopi%20Robusta%20Asli" target="_blank" class="btn-wa-produk" aria-label="Pesan Kopi Robusta Asli via WhatsApp">
+          <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+        </a>
+      </div>
+    </article>
+    <article class="produk-card" tabindex="0">
+      <img src="img/Art.jpg" alt="Kerajinan Anyaman - Produk UMKM Usaha Kita" loading="lazy" />
+      <div class="produk-info">
+        <h3>Kerajinan Anyaman</h3>
+        <div class="harga">Rp 35.000 / pcs</div>
+        <p>Kerajinan tangan berbahan alami yang unik dan fungsional untuk dekorasi rumah.</p>
+        <a href="#" class="btn-detail" tabindex="0">Detail</a>
+        <a href="https://wa.me/6281234567890?text=Halo%20Usaha%20Kita%2C%20saya%20ingin%20pesan%20Kerajinan%20Anyaman" target="_blank" class="btn-wa-produk" aria-label="Pesan Kerajinan Anyaman via WhatsApp">
+          <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+        </a>
+      </div>
+    </article>
+    <article class="produk-card" tabindex="0">
+      <img src="img/batik.jpg" alt="Kue Tradisional - Produk UMKM Usaha Kita" loading="lazy" />
+      <div class="produk-info">
+        <h3>Batik Indonesia </h3>
+        <div class="harga">Rp 100.000</div>
+        <p>Batik buatan warga lokal, dengan kualitas internasional.</p>
+        <a href="#" class="btn-detail" tabindex="0">Detail</a>
+        <a href="https://wa.me/6281234567890?text=Halo%20Usaha%20Kita%2C%20saya%20ingin%20pesan%20Kue%20Tradisional" target="_blank" class="btn-wa-produk" aria-label="Pesan Kue Tradisional via WhatsApp">
+          <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="galeri" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+  <h2>Galeri Produk</h2>
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80" alt="Proses sangrai kopi Usaha Kita" loading="lazy" />
+        <div class="galeri-caption">Proses sangrai kopi</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=600&q=80" alt="Produk kemasan kopi Usaha Kita" loading="lazy" />
+        <div class="galeri-caption">Produk kemasan kopi</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Kegiatan UMKM Usaha Kita" loading="lazy" />
+        <div class="galeri-caption">Kegiatan UMKM</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Produk anyaman Usaha Kita" loading="lazy" />
+        <div class="galeri-caption">Produk anyaman</div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<section id="testimoni" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="250">
+  <h2>Testimoni Pelanggan</h2>
+  <div class="swiper testimoniSwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <blockquote class="testimoni-card">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Rina, Medan" class="testimoni-avatar" loading="lazy" />
+          <p>"Kopinya enak banget, pelayanan ramah. Sukses terus Usaha Kita!"</p>
+          <footer>- Rina, Medan</footer>
+        </blockquote>
+      </div>
+      <div class="swiper-slide">
+        <blockquote class="testimoni-card">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Budi, Jakarta" class="testimoni-avatar" loading="lazy" />
+          <p>"Pesan via WhatsApp cepat dibalas, produk sampai dengan aman."</p>
+          <footer>- Budi, Jakarta</footer>
+        </blockquote>
+      </div>
+      <div class="swiper-slide">
+        <blockquote class="testimoni-card">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sari, Bandung" class="testimoni-avatar" loading="lazy" />
+          <p>"Produk lokal berkualitas, harga terjangkau. Pasti langganan!"</p>
+          <footer>- Sari, Bandung</footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<section id="kontak" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
+  <h2>Kontak Kami</h2>
+  <p><b>Alamat:</b> Jl. Kopi Gayo No. 1, Aceh Tengah</p>
+  <p><b>Jam Operasional:</b> 08.00 - 20.00 WIB (Senin - Sabtu)</p>
+  <form id="contactForm" novalidate>
+    <label for="nama">Nama Lengkap</label>
+    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda" />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required placeholder="contoh@email.com" />
+
+    <label for="pesan">Pesan</label>
+    <textarea id="pesan" name="pesan" required placeholder="Tulis pesan Anda di sini"></textarea>
+
+    <button type="submit">Kirim</button>
+  </form>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="assets/logo.png" alt="Logo Usaha Kita" loading="lazy" onerror="this.style.display='none'">
+    <span>Usaha Kita</span>
+  </div>
+  <div class="social-icons" aria-label="Ikon media sosial">
+    <a href="#" aria-label="Facebook" tabindex="0"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram" tabindex="0"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="Twitter" tabindex="0"><i class="fab fa-twitter"></i></a>
+    <a href="https://wa.me/6281234567890" aria-label="WhatsApp" tabindex="0"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <div class="footer-copyright">
+    © <span id="year"></span> Usaha Kita. Semua hak cipta dilindungi.
+  </div>
+</footer>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navUl = document.querySelector('nav ul');
+  hamburger.addEventListener('click', () => {
+    navUl.classList.toggle('show');
+  });
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 50){
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Initialize AOS
+  AOS.init();
+
+  // Swiper for galeri
+  const swiper = new Swiper('.mySwiper', {
+    slidesPerView: 1.3,
+    spaceBetween: 20,
+    centeredSlides: true,
+    loop: true,
+    pagination: {
+      el: '.mySwiper .swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2.5,
+      },
+      1024: {
+        slidesPerView: 3.5,
+      }
+    }
+  });
+
+  // Swiper for testimoni
+  const testimoniSwiper = new Swiper('.testimoniSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    centeredSlides: true,
+    loop: true,
+    pagination: {
+      el: '.testimoniSwiper .swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1.5,
+      },
+      1024: {
+        slidesPerView: 2.2,
+      }
+    }
+  });
+
+  // Simple form validation and submit handler
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      alert('Mohon lengkapi semua form dengan benar.');
+      return;
+    }
+
+    alert('Terima kasih atas pesan Anda! Kami akan segera menghubungi Anda.');
+    form.reset();
+  });
+
+  // Tahun otomatis di footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
