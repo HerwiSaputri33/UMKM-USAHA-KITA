@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detail Produk - Batik Indonesia | Usaha Kita</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #fffdf9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      justify-content: center;
+    }
+    .logo-img {
+      height: 38px;
+      width: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 2px solid #fbbf24;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #d97706;
+      font-weight: bold;
+      letter-spacing: 2px;
+      user-select: none;
+      margin: 0 auto;
+    }
+    .back-link {
+      color: #d97706;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      padding: 0.5rem 1.3rem;
+      font-size: 1.05rem;
+      transition: background 0.2s, box-shadow 0.2s;
+      background: #fff7ed;
+      box-shadow: 0 2px 8px rgb(251 191 36 / 0.10);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+    .back-link:hover,
+    .back-link:focus {
+      background: #fbbf24;
+      color: #fff;
+      outline: none;
+      box-shadow: 0 4px 16px rgb(251 191 36 / 0.18);
+      text-decoration: none;
+    }
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem 0.5rem;
+        justify-content: center;
+      }
+      .logo {
+        margin: 0 auto;
+        font-size: 1.1rem;
+      }
+      .back-link {
+        position: absolute;
+        left: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.1rem;
+        padding: 0.7rem 1.2rem;
+        margin-left: 0;
+      }
+    }
+    .breadcrumb {
+      margin: 2rem auto 2rem;
+      max-width: 900px;
+      font-size: 0.97rem;
+      color: #92400e;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      background: #fff7ed;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgb(251 191 36 / 0.07);
+      align-items: center;
+    }
+    .breadcrumb a {
+      color: #d97706;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .breadcrumb a:hover {
+      color: #92400e;
+      text-decoration: underline;
+    }
+    .breadcrumb-sep {
+      color: #b45309;
+      margin: 0 0.2rem;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+    }
+    .breadcrumb [aria-current="page"] {
+      font-weight: bold;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    @media (max-width: 600px) {
+      .breadcrumb {
+        font-size: 0.92rem;
+        padding: 0.5rem 0.5rem;
+        margin: 1.2rem 0.2rem 1.2rem;
+        gap: 0.1rem;
+      }
+      .detail-info h1 {
+        font-size: 1.1rem;
+      }
+      .detail-container {
+        padding: 0.7rem 0.1rem;
+        gap: 1.2rem;
+      }
+      .btn-wa-produk {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto 0.5rem auto;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 0.7rem 0;
+        box-sizing: border-box;
+        display: flex;
+      }
+      .detail-info {
+        align-items: center;
+      }
+    }
+    .detail-container {
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgb(251 191 36 / 0.10);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      padding: 2.5rem 2rem;
+      align-items: flex-start;
+    }
+    .detail-gallery {
+      width: 100%;
+      max-width: 380px;
+      margin-bottom: 1.2rem;
+    }
+    .detail-gallery .swiper-slide img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgb(0 0 0 / 0.07);
+      background: #fff7ed;
+      min-height: 220px;
+      object-fit: cover;
+    }
+    .img-loading {
+      background: linear-gradient(90deg, #f3f3f3 25%, #ecebeb 50%, #f3f3f3 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.2s infinite linear;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .detail-info {
+      flex: 2 1 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .detail-info h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      color: #92400e;
+      margin: 0 0 0.5rem 0;
+    }
+    .harga {
+      color: #d97706;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+    .btn-wa-produk {
+      background: #25d366;
+      color: #fff;
+      padding: 0.7rem 2rem;
+      border-radius: 24px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      transition: background 0.3s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 16px rgb(37 211 102 / 0.15);
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-wa-produk i {
+      font-size: 1.3em;
+    }
+    .btn-wa-produk:hover,
+    .btn-wa-produk:focus {
+      background: #128c7e;
+      color: #fff;
+      outline: none;
+      box-shadow: 0 8px 24px rgb(37 211 102 / 0.18);
+    }
+    @media (max-width: 900px) {
+      .detail-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0.5rem;
+      }
+      .detail-gallery {
+        max-width: 100%;
+      }
+      .detail-info {
+        width: 100%;
+      }
+    }
+    @media (max-width: 500px) {
+      .detail-info h1 { font-size: 1.3rem; }
+      .detail-container { padding: 1rem 0.2rem; }
+    }
+    /* Footer sederhana */
+    footer {
+      background: #2d1600;
+      color: #fff8f0;
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      font-size: 1rem;
+      margin-top: 2.5rem;
+      border-radius: 16px 16px 0 0;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-bottom: 0.7rem;
+    }
+    .footer-logo img {
+      height: 28px;
+      width: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 2px solid #fbbf24;
+    }
+    .footer-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #fbbf24;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .footer-copyright {
+      font-size: 0.97rem;
+      color: #ffe6b8;
+      margin-top: 0.7rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Kembali</a>
+    <img src="assets/logo.png" alt="Logo Usaha Kita" class="logo-img" loading="lazy" onerror="this.style.display='none'">
+    <span class="logo">Usaha Kita</span>
+  </header>
+  <!-- Breadcrumb lebih modern -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html"><i class="fa fa-home"></i> Beranda</a>
+    <span class="breadcrumb-sep"><i class="fa fa-angle-right"></i></span>
+    <a href="index.html#produk"><i class="fa fa-box"></i> Produk</a>
+    <span class="breadcrumb-sep"><i class="fa fa-angle-right"></i></span>
+    <span aria-current="page"><i class="fa fa-shirt"></i> Batik Indonesia</span>
+  </nav>
+  <main>
+    <div class="detail-container" data-aos="fade-up" data-aos-duration="1200">
+      <!-- Galeri Swiper -->
+      <div class="detail-gallery swiper" aria-label="Galeri gambar produk">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="img/batik.jpg" alt="Batik Indonesia - Tampak Depan" class="img-loading" onload="this.classList.remove('img-loading')" />
+          </div>
+          <div class="swiper-slide">
+            <img src="img/batik2.jpg" alt="Batik Indonesia - Motif Lain" class="img-loading" onload="this.classList.remove('img-loading')" />
+          </div>
+          <div class="swiper-slide">
+            <img src="img/detail.jpg" alt="Batik Indonesia - Detail Kain" class="img-loading" onload="this.classList.remove('img-loading')" />
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="detail-info">
+        <h1>Batik Indonesia</h1>
+        <div class="harga">Rp 100.000 / pcs</div>
+        <p>
+          Koleksi batik berkualitas dari UMKM Indonesia, dibuat dengan teknik tradisional cap & tulis menggunakan pewarna alami maupun sintetis. Tersedia dalam bentuk kain, pakaian, syal, masker, hingga aksesoris.
+        </p>
+        <ul>
+          <li>✔ Motif Etnik & Modern</li>
+          <li>✔ Bahan Adem & Nyaman (Katun/Rayon/Sutera)</li>
+          <li>✔ Cocok untuk Acara Formal & Kasual</li>
+          <li>✔ 100% Karya UMKM Lokal</li>
+        </ul>
+        <a href="https://wa.me/6281234567890?text=Halo%20Usaha%20Kita%2C%20saya%20ingin%20pesan%20Batik%20Indonesia" target="_blank" class="btn-wa-produk" aria-label="Pesan Batik Indonesia via WhatsApp">
+          <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+        </a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-logo">
+      <img src="assets/logo.png" alt="Logo Usaha Kita" loading="lazy" onerror="this.style.display='none'">
+      <span>Usaha Kita</span>
+    </div>
+    <div>Jl. Sungai Sungai No. 1, Kalimantan Selatan</div>
+    <div class="footer-copyright">
+      © <span id="year"></span> Usaha Kita. Semua hak cipta dilindungi.
+    </div>
+  </footer>
+  <button id="backToTop" aria-label="Kembali ke atas" style="position:fixed;right:1.2rem;bottom:1.2rem;z-index:99;display:none;background:#fbbf24;color:#fff;border:none;border-radius:50%;width:48px;height:48px;box-shadow:0 2px 8px rgba(0,0,0,0.12);font-size:1.5rem;cursor:pointer;transition:background 0.2s;">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    AOS.init();
+    // Swiper untuk galeri detail produk
+    if (document.querySelector('.detail-gallery')) {
+      new Swiper('.detail-gallery', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+          el: '.detail-gallery .swiper-pagination',
+          clickable: true,
+        },
+      });
+    }
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 300){
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+    // Footer tahun otomatis
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
