@@ -8,13 +8,17 @@
   <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-<style>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Outfit', sans-serif;
       background: #fffdf9;
       color: #333;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
     header {
       background: #fff;
@@ -156,6 +160,10 @@
         padding-left: 0.9rem;
         padding-right: 0.9rem;
       }
+      .rating-share-faq {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
     }
     .detail-container {
       max-width: 900px;
@@ -168,6 +176,8 @@
       gap: 2.5rem;
       padding: 2.5rem 2rem;
       align-items: flex-start;
+      width: 100%;
+      box-sizing: border-box;
     }
     .detail-gallery {
       width: 100%;
@@ -181,6 +191,9 @@
       background: #fff7ed;
       min-height: 220px;
       object-fit: cover;
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
     .img-loading {
       background: linear-gradient(90deg, #f3f3f3 25%, #ecebeb 50%, #f3f3f3 75%);
@@ -196,6 +209,8 @@
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
+      min-width: 0;
+      box-sizing: border-box;
     }
     .detail-info h1 {
       font-family: 'Playfair Display', serif;
@@ -253,7 +268,6 @@
       .detail-info h1 { font-size: 1.3rem; }
       .detail-container { padding: 1rem 0.2rem; }
     }
-    /* Footer sederhana */
     footer {
       background: #2d1600;
       color: #fff8f0;
@@ -290,11 +304,9 @@
       color: #ffe6b8;
       margin-top: 0.7rem;
     }
-    /* Sembunyikan bulatan Swiper */
     .swiper-pagination {
       display: none !important;
     }
-    /* Testimoni, rating, share, FAQ */
     .rating-share-faq {
       max-width: 900px;
       margin: 0 auto 2.5rem;
@@ -302,6 +314,7 @@
       background: #fff;
       border-radius: 14px;
       box-shadow: 0 2px 8px rgb(251 191 36 / 0.07);
+      box-sizing: border-box;
     }
     .rating-produk {
       margin-bottom: 1.2rem;
