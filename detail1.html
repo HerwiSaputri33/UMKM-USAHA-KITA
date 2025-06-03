@@ -152,6 +152,10 @@
         font-size: 1rem;
         padding: 0.7rem 0;
       }
+      .detail-info {
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
+      }
     }
     .detail-container {
       max-width: 900px;
@@ -183,7 +187,6 @@
       background-size: 200% 100%;
       animation: shimmer 1.2s infinite linear;
     }
-
     @keyframes shimmer {
       0% { background-position: -200% 0; }
       100% { background-position: 200% 0; }
@@ -206,21 +209,6 @@
       font-size: 1.2rem;
       margin-bottom: 0.7rem;
     }
-
-        @media (max-width: 600px) {
-  .btn-wa-produk {
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto 0.5rem auto;
-    justify-content: center;
-    font-size: 1rem;
-    padding: 0.7rem 0;
-    box-sizing: border-box;
-    display: flex;
-  }
-
-}
-
     .btn-wa-produk {
       background: #25d366;
       color: #fff;
@@ -265,7 +253,6 @@
       .detail-info h1 { font-size: 1.3rem; }
       .detail-container { padding: 1rem 0.2rem; }
     }
-
     /* Footer sederhana */
     footer {
       background: #2d1600;
@@ -302,6 +289,69 @@
       font-size: 0.97rem;
       color: #ffe6b8;
       margin-top: 0.7rem;
+    }
+    /* Sembunyikan bulatan Swiper */
+    .swiper-pagination {
+      display: none !important;
+    }
+    /* Testimoni, rating, share, FAQ */
+    .rating-share-faq {
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      padding: 1.5rem 1.2rem;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgb(251 191 36 / 0.07);
+    }
+    .rating-produk {
+      margin-bottom: 1.2rem;
+    }
+    .rating-produk .stars {
+      color: #fbbf24;
+      font-size: 1.3rem;
+      margin: 0 0.2rem;
+      letter-spacing: 1px;
+    }
+    .share-produk {
+      margin-bottom: 1.2rem;
+    }
+    .share-produk a {
+      margin: 0 0.3rem;
+      display: inline-block;
+      transition: transform 0.15s;
+    }
+    .share-produk a:hover {
+      transform: scale(1.15);
+    }
+    .testimoni {
+      margin-bottom: 1.2rem;
+    }
+    .testimoni blockquote {
+      background: #fff7ed;
+      border-left: 4px solid #fbbf24;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin: 0;
+      font-style: italic;
+    }
+    .testimoni span {
+      color: #92400e;
+      font-size: 0.97rem;
+    }
+    .faq-pengiriman h3 {
+      font-size: 1.1rem;
+      color: #d97706;
+      margin-bottom: 0.5rem;
+    }
+    .faq-pengiriman ul {
+      padding-left: 1.2rem;
+      margin: 0;
+      color: #92400e;
+      font-size: 0.98rem;
+    }
+    .faq-pengiriman a {
+      color: #25d366;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -353,6 +403,47 @@
         </a>
       </div>
     </div>
+    <!-- Fitur tambahan: rating, share, testimoni, FAQ -->
+    <section class="rating-share-faq" data-aos="fade-up">
+      <!-- 6. Rating Produk -->
+      <div class="rating-produk">
+        <span style="font-size:1.2rem;font-weight:600;color:#92400e;">Rating Produk:</span>
+        <span class="stars" aria-label="Rating 4.8 dari 5">★★★★☆</span>
+        <span style="color:#92400e;font-size:1rem;">4.8/5</span>
+        <span style="color:#b45309;font-size:0.95rem;">(120 ulasan)</span>
+      </div>
+      <!-- 3. Tombol Share Sosial Media -->
+      <div class="share-produk">
+        <span style="font-weight:600;color:#92400e;">Bagikan:</span>
+        <a href="https://wa.me/?text=Yuk%20cek%20produk%20Kopi%20Robusta%20Asli%20di%20https://yourdomain.com/detail1.html" target="_blank" aria-label="Bagikan ke WhatsApp">
+          <i class="fab fa-whatsapp" style="color:#25d366;font-size:1.3rem;"></i>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourdomain.com/detail1.html" target="_blank" aria-label="Bagikan ke Facebook">
+          <i class="fab fa-facebook" style="color:#1877f3;font-size:1.3rem;"></i>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=https://yourdomain.com/detail1.html&text=Kopi%20Robusta%20Asli%20enak%20banget!" target="_blank" aria-label="Bagikan ke Twitter">
+          <i class="fab fa-x-twitter" style="color:#111;font-size:1.3rem;"></i>
+        </a>
+      </div>
+      <!-- 1. Testimoni Pelanggan -->
+      <div class="testimoni">
+        <h3 style="font-size:1.1rem;color:#d97706;margin-bottom:0.5rem;">Testimoni Pelanggan</h3>
+        <blockquote>
+          "Kopinya harum dan rasanya mantap! Pengiriman cepat, seller ramah." <br>
+          <span>- Andi, Jakarta</span>
+        </blockquote>
+      </div>
+      <!-- 5. FAQ / Info Pengiriman -->
+      <div class="faq-pengiriman">
+        <h3>Info Pengiriman & FAQ</h3>
+        <ul>
+          <li>Pengiriman setiap hari kerja via JNE/J&T/SiCepat.</li>
+          <li>Estimasi sampai 2-4 hari (Jawa), 3-7 hari (luar Jawa).</li>
+          <li>Garansi produk rusak/pecah diganti baru.</li>
+          <li>Butuh bantuan? <a href="https://wa.me/6281234567890">Hubungi kami via WhatsApp</a></li>
+        </ul>
+      </div>
+    </section>
   </main>
   <footer>
     <div class="footer-logo">
