@@ -19,10 +19,24 @@ a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; border-radius: 12px; }
 
 /* Navbar */
+/* Tambahkan di bawah .hamburger */
+@media (max-width: 768px) {
+  .hamburger {
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+
+  }
+  header {
+    position: relative;
+  }
+}
 header {
   position: sticky;
   top: 0;
-  background: rgba(255 255 255 / 0.97);
+  background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
   z-index: 1000;
   transition: background-color 0.3s ease, padding 0.3s ease;
@@ -34,7 +48,7 @@ header {
 }
 header.scrolled {
   background: var(--brand-dark);
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 0.6rem 2rem;
   box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
 }
@@ -113,6 +127,12 @@ nav ul li a:focus {
     box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     border-radius: 12px;
     z-index: 1001;
+  }
+    nav ul {
+    background: var(--brand-light);
+  }
+  nav ul li a {
+    color: var(--brand-brown);
   }
   nav ul.show {
     display: flex;
@@ -392,6 +412,7 @@ section + section {
   background: #fff7ed;
   display: block;
 }
+.swiper-pagination { display: none !important; }
 
 /* Testimoni Swiper */
 #testimoni {
