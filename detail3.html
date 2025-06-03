@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <style>
+<style>
     body {
       font-family: 'Outfit', sans-serif;
       background: #fffdf9;
@@ -148,16 +148,13 @@
       }
       .btn-wa-produk {
         width: 100%;
-        max-width: 320px;
-        margin: 0 auto 0.5rem auto;
         justify-content: center;
         font-size: 1rem;
         padding: 0.7rem 0;
-        box-sizing: border-box;
-        display: flex;
       }
       .detail-info {
-        align-items: center;
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
       }
     }
     .detail-container {
@@ -293,6 +290,69 @@
       color: #ffe6b8;
       margin-top: 0.7rem;
     }
+    /* Sembunyikan bulatan Swiper */
+    .swiper-pagination {
+      display: none !important;
+    }
+    /* Testimoni, rating, share, FAQ */
+    .rating-share-faq {
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      padding: 1.5rem 1.2rem;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgb(251 191 36 / 0.07);
+    }
+    .rating-produk {
+      margin-bottom: 1.2rem;
+    }
+    .rating-produk .stars {
+      color: #fbbf24;
+      font-size: 1.3rem;
+      margin: 0 0.2rem;
+      letter-spacing: 1px;
+    }
+    .share-produk {
+      margin-bottom: 1.2rem;
+    }
+    .share-produk a {
+      margin: 0 0.3rem;
+      display: inline-block;
+      transition: transform 0.15s;
+    }
+    .share-produk a:hover {
+      transform: scale(1.15);
+    }
+    .testimoni {
+      margin-bottom: 1.2rem;
+    }
+    .testimoni blockquote {
+      background: #fff7ed;
+      border-left: 4px solid #fbbf24;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin: 0;
+      font-style: italic;
+    }
+    .testimoni span {
+      color: #92400e;
+      font-size: 0.97rem;
+    }
+    .faq-pengiriman h3 {
+      font-size: 1.1rem;
+      color: #d97706;
+      margin-bottom: 0.5rem;
+    }
+    .faq-pengiriman ul {
+      padding-left: 1.2rem;
+      margin: 0;
+      color: #92400e;
+      font-size: 0.98rem;
+    }
+    .faq-pengiriman a {
+      color: #25d366;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -301,7 +361,6 @@
     <img src="assets/logo.png" alt="Logo Usaha Kita" class="logo-img" loading="lazy" onerror="this.style.display='none'">
     <span class="logo">Usaha Kita</span>
   </header>
-  <!-- Breadcrumb lebih modern -->
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="index.html"><i class="fa fa-home"></i> Beranda</a>
     <span class="breadcrumb-sep"><i class="fa fa-angle-right"></i></span>
@@ -311,7 +370,6 @@
   </nav>
   <main>
     <div class="detail-container" data-aos="fade-up" data-aos-duration="1200">
-      <!-- Galeri Swiper -->
       <div class="detail-gallery swiper" aria-label="Galeri gambar produk">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -343,6 +401,43 @@
         </a>
       </div>
     </div>
+    <!-- Fitur tambahan: rating, share, testimoni, FAQ -->
+    <section class="rating-share-faq" data-aos="fade-up">
+      <div class="rating-produk">
+        <span style="font-size:1.2rem;font-weight:600;color:#92400e;">Rating Produk:</span>
+        <span class="stars" aria-label="Rating 4.7 dari 5">★★★★☆</span>
+        <span style="color:#92400e;font-size:1rem;">4.7/5</span>
+        <span style="color:#b45309;font-size:0.95rem;">(65 ulasan)</span>
+      </div>
+      <div class="share-produk">
+        <span style="font-weight:600;color:#92400e;">Bagikan:</span>
+        <a href="https://wa.me/?text=Yuk%20cek%20produk%20Batik%20Indonesia%20di%20https://yourdomain.com/detail3.html" target="_blank" aria-label="Bagikan ke WhatsApp">
+          <i class="fab fa-whatsapp" style="color:#25d366;font-size:1.3rem;"></i>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourdomain.com/detail3.html" target="_blank" aria-label="Bagikan ke Facebook">
+          <i class="fab fa-facebook" style="color:#1877f3;font-size:1.3rem;"></i>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=https://yourdomain.com/detail3.html&text=Batik%20Indonesia%20keren%20dan%20berkualitas!" target="_blank" aria-label="Bagikan ke Twitter">
+          <i class="fab fa-x-twitter" style="color:#111;font-size:1.3rem;"></i>
+        </a>
+      </div>
+      <div class="testimoni">
+        <h3 style="font-size:1.1rem;color:#d97706;margin-bottom:0.5rem;">Testimoni Pelanggan</h3>
+        <blockquote>
+          "Motif batiknya cantik, kainnya adem dan nyaman dipakai. Sangat puas dengan kualitasnya!" <br>
+          <span>- Rina, Surabaya</span>
+        </blockquote>
+      </div>
+      <div class="faq-pengiriman">
+        <h3>Info Pengiriman & FAQ</h3>
+        <ul>
+          <li>Pengiriman setiap hari kerja via JNE/J&T/SiCepat.</li>
+          <li>Estimasi sampai 2-4 hari (Jawa), 3-7 hari (luar Jawa).</li>
+          <li>Garansi produk rusak/pecah diganti baru.</li>
+          <li>Butuh bantuan? <a href="https://wa.me/6281234567890">Hubungi kami via WhatsApp</a></li>
+        </ul>
+      </div>
+    </section>
   </main>
   <footer>
     <div class="footer-logo">
@@ -361,7 +456,6 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script>
     AOS.init();
-    // Swiper untuk galeri detail produk
     if (document.querySelector('.detail-gallery')) {
       new Swiper('.detail-gallery', {
         slidesPerView: 1,
@@ -372,7 +466,6 @@
         },
       });
     }
-    // Back to Top Button
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if(window.scrollY > 300){
@@ -384,7 +477,6 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({top:0, behavior:'smooth'});
     });
-    // Footer tahun otomatis
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
